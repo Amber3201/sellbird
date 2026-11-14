@@ -1,7 +1,7 @@
 # 10sec outbound: running Sellbird in a GitHub Codespace
 
 This repo is Amber's fork of Sellbird (github.com/ethanplusai/sellbird, AGPL-3.0) with 10sec's setup in the `10sec/` folder:
-- `10sec/sellbird.local.yaml`: offer, audience, limits, India time zone, compliance, safety settings (template)
+- `10sec/config.template.yaml`: offer, audience, limits, India time zone, compliance, safety settings (template)
 - `10sec/email_rules.md`: 10sec house rules for every email Sellbird writes (template)
 - `.devcontainer/` + `10sec/setup.sh`: the Codespace installs Python, Sellbird and Claude Code, then copies both templates into place
 
@@ -47,7 +47,7 @@ Repo page (github.com/Amber3201/sellbird) → switch the branch to **10sec** →
 ```bash
 claude                      # sign in with your Claude Pro/Max account, then type /exit
 sellbird train https://10sec.space
-cp 10sec/sellbird.local.yaml .      # training rewrites the config; this restores the 10sec version (then redo step 3)
+cp 10sec/config.template.yaml sellbird.local.yaml      # training rewrites the config; this restores the 10sec version (then redo step 3)
 sellbird signals --confirm free
 sellbird inboxes list               # shows the mailbox; then: sellbird inboxes test <sending-address>
 ```

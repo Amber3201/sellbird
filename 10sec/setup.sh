@@ -8,7 +8,7 @@ npm install -g @anthropic-ai/claude-code
 
 # Put the 10sec templates in place. Both targets are gitignored, so what
 # you fill in here (mailbox, postal address) never reaches this public repo.
-[ -f sellbird.local.yaml ] || cp 10sec/sellbird.local.yaml sellbird.local.yaml
+[ -f sellbird.local.yaml ] || cp 10sec/config.template.yaml sellbird.local.yaml
 [ -f skills/email_rules.md ] || cp 10sec/email_rules.md skills/email_rules.md
 
 echo

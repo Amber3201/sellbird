@@ -1,0 +1,142 @@
+# ============================================================
+# 10sec · Sellbird config TEMPLATE (copied to ./sellbird.local.yaml by 10sec/setup.sh)
+# TEMPLATE. The Codespace copies it to ./sellbird.local.yaml (gitignored). Edit that copy,
+# not this file: this repo is public. The root copy wins over
+# sellbird.yaml and git never touches it.
+# Anything marked  >>> FILL IN  needs a decision from Amber first.
+# ============================================================
+
+persona:
+  name: "Amber Kujur"
+  company: "10sec"
+  role: "Founder"
+  email: "amber@SENDING-DOMAIN"          # >>> FILL IN: mailbox on the separate sending domain
+  linkedin: ""                           # LinkedIn skipped on purpose
+  tone: "warm, sharp and specific; curious like a lab, never salesy; one light touch of wit at most"
+
+product:
+  name: "10sec"
+  description: >-
+    10sec is a new creative lab from India that designs websites, social media and
+    search visibility (SEO + AEO) to win the first 10 seconds. A new visitor decides
+    whether to stay in about that long, so every homepage we build answers four
+    questions fast: what is this, is it for me, can I trust it, what do I do next.
+    For small businesses, D2C brands and startup founders who want enquiries,
+    not vanity metrics, and one partner instead of three vendors.
+  pricing: "Never quote or hint at a price in email. Every project gets a fixed quote after a free 30-minute intro call."
+  key_benefits:
+    - "Homepages built to pass the 10-second test: what is this, is it for me, can I trust it, what next"
+    - "SEO-friendly and AEO-ready from day one, with schema so Google and AI assistants can read and cite the business"
+    - "Redesigns and migrations that keep rankings: every old URL mapped and 301-redirected in one hop"
+    - "Website, social and search run from one plan, one voice and one point of contact"
+    - "The client owns the domain, site, accounts, content and code"
+  objection_responses:
+    "too expensive": "Fair. There's no fixed price list because every quote is fixed to the actual scope. The free test costs nothing and is useful on its own, even if we never work together."
+    "already have an agency": "Makes sense. The 10-second test is still a free second opinion. If it agrees with your current team, that's good news too."
+    "already have a website": "That's exactly why I wrote. It's not about replacing it, just whether a stranger gets it in 10 seconds. Small fixes often matter more than a rebuild."
+    "not interested": "No problem at all, I won't email again. Good luck with the season."
+    "send me details": "Happy to. The quickest useful thing is the free 10-second test of your homepage: five plain bullets, no deck. Want it?"
+    "are you an ai": "Answer truthfully: Amber uses an AI assistant to help research and draft emails, and she reads and approves what goes out."
+  offer:
+    primary: "Website design, social media marketing and SEO + AEO, each quoted as a fixed price after a free intro call"
+    entry: "A free 10-second test of their homepage: five plain bullets on what a first-time visitor gets, and misses, in the first 10 seconds"
+    goal: "book_call"
+    booking_method: "calendar_link"
+    booking_url: "https://calendly.com/amber-10sec/30min"
+    meeting_duration: "30 minutes"
+    meeting_owner: "Amber Kujur"
+
+icp:
+  # Working assumption from the brief (India first). Change if the audience changes.
+  industries:
+    - "Dentist"
+    - "Dermatology and skin clinic"
+    - "Physiotherapy clinic"
+    - "Interior designer"
+    - "Architecture firm"
+    - "Boutique hotel"
+    - "Cafe"
+    - "Salon and spa"
+    - "Coaching institute"
+  company_size: "1-50 employees"
+  titles:
+    - "Founder"
+    - "Co-founder"
+    - "Owner"
+    - "Director"
+    - "Managing Director"
+    - "Principal Architect"
+    - "Head of Marketing"
+  geography:
+    - "Bengaluru, Karnataka, India"
+    - "Mumbai, Maharashtra, India"
+    - "Pune, Maharashtra, India"
+    - "Hyderabad, Telangana, India"
+    - "New Delhi, Delhi, India"
+    - "Gurugram, Haryana, India"
+  geo_coordinates:
+    "Bengaluru, Karnataka, India": "12.9716,77.5946,25"
+    "Mumbai, Maharashtra, India": "19.0760,72.8777,25"
+    "Pune, Maharashtra, India": "18.5204,73.8567,20"
+    "Hyderabad, Telangana, India": "17.3850,78.4867,25"
+    "New Delhi, Delhi, India": "28.6139,77.2090,25"
+    "Gurugram, Haryana, India": "28.4595,77.0266,15"
+  # A business hiring for these roles is investing in marketing right now.
+  hiring_signals:
+    - "Digital Marketing"
+    - "Social Media Manager"
+    - "SEO"
+    - "Marketing Manager"
+    - "Content Creator"
+
+channels:
+  email:
+    enabled: true
+    provider: "smtp"             # Google Workspace mailbox via app password (works in a Codespace; Gmail OAuth needs a local browser)
+    max_daily_sends: 30          # a ceiling, not a target. Start small.
+    require_approval: true       # every email waits in the Outbox for Amber. Keep this on.
+    link_domains: ["10sec.space", "calendly.com"]
+    send_to_risky: false
+    min_write_score: 60          # only write to strong fits
+    max_bounce_rate: 0.03        # pause everything if bounces pass 3%
+    warmup:
+      start_date: ""             # >>> FILL IN: YYYY-MM-DD the day warmup starts on the new mailbox
+      min_days: 14
+      start_sends: 5
+      daily_increase: 3
+      dkim_selector: ""
+    send_window:
+      start: "10:00"
+      end: "18:00"
+      weekdays_only: true
+      recipient_timezone: true
+    signature:
+      logo: ""                   # plain text lands better for cold email. Leave blank.
+      width: 120
+      alt: ""
+      link: ""
+      direction: "auto"
+  linkedin:
+    enabled: false               # stays off (ToS risk, and LinkedIn is skipped for now)
+    max_daily_connections: 20
+    max_daily_messages: 10
+
+usage:
+  max_daily_claude_percent: 50   # leaves half of the Claude plan for Amber's own work
+  heartbeat_interval_minutes: 15
+  quiet_hours:
+    start: "22:00"
+    end: "08:00"
+    timezone: "Asia/Kolkata"
+
+compliance:
+  postal_address: ""             # >>> FILL IN: a business address or virtual mailbox. Required by US law, good practice everywhere.
+  opt_out_line: "Not useful right now? Just say so and I won't email again."
+  do_not_contact: []             # add competitors, friends, anyone you never want emailed
+  precleared:
+    enabled: false               # Precleared doesn't list India as a sender country yet
+
+writer:
+  email_rules: "skills/email_rules.md"
+  site_facts: true
+  require_tip: true              # no real observation from their site = no email
