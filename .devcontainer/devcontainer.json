@@ -1,0 +1,29 @@
+{
+  "name": "10sec · Sellbird",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": { "version": "lts" }
+  },
+  "hostRequirements": { "cpus": 2 },
+  "containerEnv": { "TZ": "Asia/Kolkata" },
+  "postCreateCommand": "bash 10sec/setup.sh",
+  "postStartCommand": "sellbird status || true",
+  "forwardPorts": [5555],
+  "portsAttributes": {
+    "5555": { "label": "Sellbird dashboard", "onAutoForward": "silent" }
+  },
+  "secrets": {
+    "SMTP_HOST": { "description": "smtp.gmail.com for a Google Workspace mailbox" },
+    "SMTP_USERNAME": { "description": "The sending mailbox, e.g. amber@<sending-domain>" },
+    "SMTP_PASSWORD": { "description": "A Google Workspace app password for that mailbox (not your normal password)" },
+    "IMAP_HOST": { "description": "imap.gmail.com" },
+    "REOON_API_KEY": { "description": "Email verification, 600 free checks a month (reoon.com/email-verifier)" },
+    "SERPER_API_KEY": { "description": "Google search for finding businesses, 2,500 free searches (serper.dev)" },
+    "HUNTER_API_KEY": { "description": "Optional. Learns each company's email pattern (hunter.io)" }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python", "redhat.vscode-yaml"]
+    }
+  }
+}
